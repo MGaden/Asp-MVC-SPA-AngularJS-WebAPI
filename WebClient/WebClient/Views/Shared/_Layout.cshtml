@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="myApp" lang="@Helpers.CultureHelper.GetCurrentNeutralCulture()" dir="@(Helpers.CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8" />
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css" + (Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+
+</head>
+<body ng-controller="MainController">
+
+    @RenderPage("header.cshtml")
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <hr />
+
+    <div style="bottom:20px" id="footer">@RenderPage("footer.cshtml")</div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/bootstrap" + (Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Html.Partial("_Scripts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

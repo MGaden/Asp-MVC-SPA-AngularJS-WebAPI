@@ -1,0 +1,65 @@
+﻿<div class="row" ng-controller="OrderController">
+
+    <div class="panel">
+        <ul class="nav nav-stacked">
+            <li><h3 class="highlight">{{resourcesValues.addOrder}}</h3></li>
+            <li>
+                <div class="row">
+                    <label class="label label-primary">{{resourcesValues.name}}</label>
+                    <input type="text" ng-model="order.Name" class="form-control" />
+                </div>
+                <div class="row">
+                    <label class="label label-primary">{{resourcesValues.price}}</label>
+                    <input type="number" ng-model="order.Price" class="form-control">
+                </div>
+                <div class="row">
+                    <button ng-click="saveOrder()" class="btn btn-primary">{{resourcesValues.save}}</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <ul class="nav nav-stacked">
+            <li><h3 class="highlight">{{resourcesValues.filterOrderList}}</h3></li>
+            <li>
+                <div class="row">
+                    <label class="label label-primary">{{resourcesValues.name}}</label>
+                    <input type="text" ng-model="fOrder.Name" class="form-control" />
+                </div>
+                <div class="row">
+                    <label class="label label-primary">{{resourcesValues.price}}</label>
+                    <input type="number" ng-model="fOrder.Price" class="form-control">
+                </div>
+                <div class="row">
+                    <button ng-click="filterOrder()" class="btn btn-primary">{{resourcesValues.filterList}}</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="panel">
+        <ul class="nav nav-stacked">
+            <li><h3 class="highlight">{{resourcesValues.orderList}}</h3></li>
+            <li>
+                <table class="table table-striped table-bordered">
+                    <tr class="data-grid-header">
+                        <th> <div>{{resourcesValues.name}} </div> </th>
+                        <th> <div>{{resourcesValues.price}}</div> </th>
+                    </tr>
+                    <tr ng-repeat="x in orders">
+                        <td>{{ x.Name }}</td>
+                        <td><input type="number" ng-model="x.Price" class="form-control" ng-change="updatePrice(x)"></td>
+                        <td><button ng-click="edit(x)" class="btn btn-primary">{{resourcesValues.edit}}</button></td>
+                        <td><button ng-click="delete(x.ID)" class="btn btn-primary" confirm="{{resourcesValues.confirmDelete}}, {{x.Name}}?" confirm-settings="{size: 'sm'}">{{resourcesValues.delete}}</button></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+
+    
+
+
+    </div>

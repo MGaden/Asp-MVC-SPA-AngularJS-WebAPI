@@ -1,0 +1,13 @@
+E:\WebClient\WebClient.Resource\bin\Debug\WebClient.Resource.dll
+E:\WebClient\WebClient.Resource\bin\Debug\WebClient.Resource.pdb
+E:\WebClient\WebClient.Resource\bin\Debug\ar-EG\WebClient.Resource.resources.dll
+E:\WebClient\WebClient.Resource\bin\Debug\en-US\WebClient.Resource.resources.dll
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.csprojResolveAssemblyReference.cache
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.Main.Resource.ar-EG.resources
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.Main.Resource.en-US.resources
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.csproj.GenerateResource.Cache
+E:\WebClient\WebClient.Resource\obj\Debug\ar-EG\WebClient.Resource.resources.dll
+E:\WebClient\WebClient.Resource\obj\Debug\en-US\WebClient.Resource.resources.dll
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.dll
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.pdb
+E:\WebClient\WebClient.Resource\obj\Debug\WebClient.Resource.Main.Resource.resources

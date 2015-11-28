@@ -1,0 +1,16 @@
+﻿
+<nav class="navbar navbar-static">
+    <div class="container">
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
+        <div class="nav-collapse collase">
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Home</a></li>
+                <li><a class="highlight">gadenapp@gmail.com</a></li>
+                <li><a><select ng-model="selectedCulture" ng-options="lang.Name for lang in languages" ng-change="selectedChange(selectedCulture.CultureName)"></select></a></li>
+            </ul>
+        </div>
+    </div>
+</nav><!-- /.navbar -->
+
