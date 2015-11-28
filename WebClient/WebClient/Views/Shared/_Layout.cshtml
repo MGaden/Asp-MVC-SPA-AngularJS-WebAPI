@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html data-ng-app="myApp" lang="@Helpers.CultureHelper.GetCurrentNeutralCulture()" dir="@(Helpers.CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
+<html data-ng-app="myApp" lang="@MyWebClient.Helpers.CultureHelper.GetCurrentNeutralCulture()" dir="@(MyWebClient.Helpers.CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8" />
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title</title>
     @*@Styles.Render("~/Content/css")*@
-    @Styles.Render("~/Content/css" + (Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Styles.Render("~/Content/css" + (MyWebClient.Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
 
 </head>
 <body ng-controller="MainController">
@@ -24,7 +24,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
-    @Scripts.Render("~/bundles/bootstrap" + (Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Scripts.Render("~/bundles/bootstrap" + (MyWebClient.Helpers.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
     @Html.Partial("_Scripts")
     @RenderSection("scripts", required: false)
 </body>
