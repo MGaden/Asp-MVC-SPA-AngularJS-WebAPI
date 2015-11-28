@@ -2,7 +2,7 @@
 GO
 
 /****** Object:  Database [WebTask]    Script Date: 11/28/2015 15:52:04 ******/
-CREATE DATABASE [WebTask] ON  PRIMARY 
+CREATE DATABASE [WebTask]
 GO
 
 ALTER DATABASE [WebTask] SET COMPATIBILITY_LEVEL = 100
