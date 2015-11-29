@@ -42,6 +42,7 @@
             DataService.updateOrder($scope.order, function (result) {
                 if (result.Sucess != undefined && result.Sucess) {
                     $scope.order = {};
+                    frmsaveOrder.orderName.$dirty = false;
                     $scope.isEditing = false;
                     $scope.refreshGrid();
                 }
@@ -57,6 +58,7 @@
             DataService.addOrder($scope.order, function (result) {
                 if (result.Sucess != undefined && result.Sucess) {
                     $scope.order = {};
+                    frmsaveOrder.orderName.$dirty = false;
                     $scope.refreshGrid();
                 }
                 else {
@@ -69,7 +71,9 @@
     };
 
     $scope.updatePrice = function (order) {
-        DataService.updateOrder(order, function (result) {
+        if (/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/.test(order.Price))
+        {
+            DataService.updateOrder(order, function (result) {
                 if (result.Sucess != undefined && result.Sucess) {
                     $scope.order = {};
                     $scope.isEditing = false;
@@ -80,7 +84,7 @@
                 }
 
             });
-
+        }
     };
 
     

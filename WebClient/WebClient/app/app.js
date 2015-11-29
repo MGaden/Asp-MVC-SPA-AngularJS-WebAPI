@@ -1,4 +1,4 @@
-﻿var appRoot = angular.module('myApp', ['ngRoute', 'ngResource', 'angular-confirm', 'ui.bootstrap']);
+﻿var appRoot = angular.module('myApp', ['ngRoute', 'ngResource', 'angular-confirm', 'ui.bootstrap', 'ngMessages']);
 
 
 appRoot.config(function ($controllerProvider, $compileProvider, $filterProvider, $provide, $locationProvider) {

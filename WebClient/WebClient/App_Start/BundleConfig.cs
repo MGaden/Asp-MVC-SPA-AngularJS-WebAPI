@@ -45,6 +45,7 @@ namespace WebClient
                  "~/Scripts/angular-route.js",
                  "~/Scripts/angular-animate.min.js",
                  "~/Scripts/angular-confirm.js",
+                 "~/Scripts/angular-messages.min.js",
                  "~/Scripts/ui-bootstrap-tpls-0.14.3.js"
                  ).Include("~/Scripts/ui.*");
             bundles.Add(AngularJSBundle);

@@ -4,17 +4,26 @@
         <ul class="nav nav-stacked">
             <li><h3 class="highlight">{{resourcesValues.addOrder}}</h3></li>
             <li>
-                <div class="row">
-                    <label class="label label-primary">{{resourcesValues.name}}</label>
-                    <input type="text" ng-model="order.Name" class="form-control" />
-                </div>
-                <div class="row">
-                    <label class="label label-primary">{{resourcesValues.price}}</label>
-                    <input type="number" ng-model="order.Price" class="form-control">
-                </div>
-                <div class="row">
-                    <button ng-click="saveOrder()" class="btn btn-primary">{{resourcesValues.save}}</button>
-                </div>
+                <form name="frmsaveOrder">
+                    <div class="row">
+                        <label class="label label-primary">{{resourcesValues.name}}</label>
+                        <input type="text" name="orderName" ng-model="order.Name" class="form-control" required />
+                        <div ng-messages="frmsaveOrder.orderName.$error" ng-if="frmsaveOrder.orderName.$dirty">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="label label-primary">{{resourcesValues.price}}</label>
+                        <input name="orderprice" ng-model="order.Price" class="form-control" required ng-pattern="/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/">
+                        <div ng-messages="frmsaveOrder.orderprice.$error" ng-if="frmsaveOrder.orderprice.$dirty">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="pattern">Must be a valid money</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button ng-click="saveOrder()" class="btn btn-primary">{{resourcesValues.save}}</button>
+                    </div>
+                </form>
             </li>
         </ul>
     </div>
@@ -23,18 +32,23 @@
         <ul class="nav nav-stacked">
             <li><h3 class="highlight">{{resourcesValues.filterOrderList}}</h3></li>
             <li>
-                <div class="row">
-                    <label class="label label-primary">{{resourcesValues.name}}</label>
-                    <input type="text" ng-model="fOrder.Name" class="form-control" />
-                </div>
-                <div class="row">
-                    <label class="label label-primary">{{resourcesValues.price}}</label>
-                    <input type="number" ng-model="fOrder.Price" class="form-control">
-                </div>
-                <div class="row">
-                    <button ng-click="filterOrder()" class="btn btn-primary">{{resourcesValues.filterList}}</button>
-                </div>
-            </li>
+                <form name="frmfilterOrder">
+                    <div class="row">
+                        <label class="label label-primary">{{resourcesValues.name}}</label>
+                        <input type="text" ng-model="fOrder.Name" class="form-control" />
+                    </div>
+                    <div class="row">
+                        <label class="label label-primary">{{resourcesValues.price}}</label>
+                        <input name="forderprice" ng-model="fOrder.Price" class="form-control" ng-pattern="/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/">
+                        <div ng-messages="frmfilterOrder.forderprice.$error" ng-if="frmfilterOrder.forderprice.$dirty">
+                            <div ng-message="pattern">Must be a valid money</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button ng-click="filterOrder()" class="btn btn-primary">{{resourcesValues.filterList}}</button>
+                    </div>
+                </form>
+           </li>
         </ul>
     </div>
 
@@ -43,18 +57,24 @@
         <ul class="nav nav-stacked">
             <li><h3 class="highlight">{{resourcesValues.orderList}}</h3></li>
             <li>
-                <table class="table table-striped table-bordered">
-                    <tr class="data-grid-header">
-                        <th> <div>{{resourcesValues.name}} </div> </th>
-                        <th> <div>{{resourcesValues.price}}</div> </th>
-                    </tr>
-                    <tr ng-repeat="x in orders">
-                        <td>{{ x.Name }}</td>
-                        <td><input type="number" ng-model="x.Price" class="form-control" ng-change="updatePrice(x)"></td>
-                        <td><button ng-click="edit(x)" class="btn btn-primary">{{resourcesValues.edit}}</button></td>
-                        <td><button ng-click="delete(x.ID)" class="btn btn-primary" confirm="{{resourcesValues.confirmDelete}}, {{x.Name}}?" confirm-settings="{size: 'sm'}">{{resourcesValues.delete}}</button></td>
-                    </tr>
-                </table>
+                <form name="frminlineprice">
+                    <table class="table table-striped table-bordered">
+                        <tr class="data-grid-header">
+                            <th> <div>{{resourcesValues.name}} </div> </th>
+                            <th> <div>{{resourcesValues.price}}</div> </th>
+                        </tr>
+                        <tr ng-repeat="x in orders">
+                            <td>{{ x.Name }}</td>
+                            <td><input name="inlinePrice" ng-model="x.Price" class="form-control" ng-change="updatePrice(x)" required ng-pattern="/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/">
+                                <div ng-messages="frminlineprice.inlinePrice.$error" ng-if="frminlineprice.inlinePrice.$dirty">
+                                    <div ng-message="required">This field is required</div>
+                                    <div ng-message="pattern">Must be a valid money</div>
+                                </div></td>
+                            <td><button ng-click="edit(x)" class="btn btn-primary">{{resourcesValues.edit}}</button></td>
+                            <td><button ng-click="delete(x.ID)" class="btn btn-primary" confirm="{{resourcesValues.confirmDelete}}, {{x.Name}}?" confirm-settings="{size: 'sm'}">{{resourcesValues.delete}}</button></td>
+                        </tr>
+                    </table>
+                </form>
             </li>
         </ul>
     </div>
