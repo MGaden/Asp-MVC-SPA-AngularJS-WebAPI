@@ -37,41 +37,48 @@
     $scope.refreshGrid();
 
     $scope.saveOrder = function () {
-        if ($scope.isEditing)
+        if (!$scope.frmsaveOrder.$invalid)
         {
-            DataService.updateOrder($scope.order, function (result) {
-                if (result.Sucess != undefined && result.Sucess) {
-                    $scope.order = {};
-                    frmsaveOrder.orderName.$dirty = false;
-                    $scope.isEditing = false;
-                    $scope.refreshGrid();
-                }
-                else {
+            if ($scope.isEditing) {
+                DataService.updateOrder($scope.order, function (result) {
+                    if (result.Sucess != undefined && result.Sucess) {
+                        $scope.order = {};
+                        $scope.frmsaveOrder.$dirty = false;
+                        $scope.frmsaveOrder.$inValid = false;
+                        $scope.frmsaveOrder.orderName.$dirty = false;
+                        $scope.frmsaveOrder.orderprice.$dirty = false;
+                        $scope.isEditing = false;
+                        $scope.refreshGrid();
+                    }
+                    else {
 
-                }
-               
-            });
-            
-        }
-        else
-        {
-            DataService.addOrder($scope.order, function (result) {
-                if (result.Sucess != undefined && result.Sucess) {
-                    $scope.order = {};
-                    frmsaveOrder.orderName.$dirty = false;
-                    $scope.refreshGrid();
-                }
-                else {
+                    }
 
-                }
-                
-            });
+                });
+
+            }
+            else {
+                DataService.addOrder($scope.order, function (result) {
+                    if (result.Sucess != undefined && result.Sucess) {
+                        $scope.order = {};
+                        $scope.frmsaveOrder.$dirty = false;
+                        $scope.frmsaveOrder.$invalid = false;
+                        $scope.frmsaveOrder.orderName.$dirty = false;
+                        $scope.frmsaveOrder.orderprice.$dirty = false;
+                        $scope.refreshGrid();
+                    }
+                    else {
+
+                    }
+
+                });
+            }
         }
-        
+       
     };
 
     $scope.updatePrice = function (order) {
-        if (/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/.test(order.Price))
+        if(!$scope.frminlineprice.$invalid)//if (/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/.test(order.Price))
         {
             DataService.updateOrder(order, function (result) {
                 if (result.Sucess != undefined && result.Sucess) {
@@ -85,22 +92,28 @@
 
             });
         }
+        else
+        {
+            order.$dirty = true;
+        }
+        return order;
     };
 
     
     $scope.filterOrder = function () {
-        if ($scope.fOrder.Name != undefined || $scope.fOrder.Price != undefined)
-        {
-            DataService.getFilteredData($scope.fOrder, function (data) {
-                $scope.orders = data;
-            });
+        if (!$scope.frmfilterOrder.$invalid) {
+            if ($scope.fOrder.Name != undefined || $scope.fOrder.Price != undefined) {
+                DataService.getFilteredData($scope.fOrder, function (data) {
+                    $scope.orders = data;
+                });
+            }
+            else {
+                $scope.refreshGrid();
+            }
+
+            $scope.fOrder = {};
+            $scope.frmfilterOrder.forderprice.$dirty = false;
         }
-        else
-        {
-            $scope.refreshGrid();
-        }
-             
-        $scope.fOrder = {};
     };
 
     $scope.delete = function (id) {
